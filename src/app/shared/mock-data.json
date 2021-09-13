@@ -1,0 +1,16 @@
+[{
+    "model": "Maruti 800",
+    "type": "Car",
+    "color": "Red",
+    "licenseNumber": "TN5600DF",
+    "owner": "Karthik",
+    "capacity": "N/A"
+  },
+  {
+    "model": "Mazda Cruz",
+    "type": "Truck",
+    "color": "White",
+    "licenseNumber": "FG5600YU",
+    "owner": "Ravi",
+    "capacity": "200Ibs"
+  }]

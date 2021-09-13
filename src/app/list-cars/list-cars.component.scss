@@ -1,0 +1,13 @@
+.header-align-right {
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  :host ::ng-deep .mat-sort-header-container { 
+    display: flex;  
+    justify-content: center; 
+}
+
+th.mat-header-cell, td.mat-cell { 
+    text-align: center; 
+}

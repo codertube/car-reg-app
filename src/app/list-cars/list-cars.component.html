@@ -1,0 +1,68 @@
+<div class="alert alert-danger" *ngIf="error$ | async as error">
+    <h2>ERROR</h2>
+    {{ error.message }}
+ </div>
+  
+  
+<div class="progress mb-4 mt-5" *ngIf="loading$ | async">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%">
+      Loading movies...
+    </div>
+</div>
+
+<mat-grid-list cols="4" rowHeight="100px" >
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-form-field>
+        <mat-label>Basic View</mat-label>
+        <mat-select (selectionChange)="onCarViewChange($event)" [(ngModel)]="selectedView" name="color" required>
+          <mat-option [value]="">Select View</mat-option>
+          <mat-option *ngFor="let view of views" [value]="view.id">
+            {{view.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-form-field>
+        <input matInput type="text" [(ngModel)]="searchKey" (keyup)="doFilter()" placeholder="Filter">
+      </mat-form-field>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<table mat-table class="mat-elevation-z8" [dataSource]="dataSource" style="width:100%">
+  
+    <ng-container matColumnDef="type">
+        <th *matHeaderCellDef style="width:15%">Type</th>
+        <td *matCellDef="let car">{{car.type}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="model">
+        <th *matHeaderCellDef>Model</th>
+        <td *matCellDef="let car">{{car.model}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="color">
+        <th *matHeaderCellDef>Color</th>
+        <td *matCellDef="let car">{{car.color}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="licenseNumber">
+        <th *matHeaderCellDef>License Number</th>
+        <td *matCellDef="let car">{{car.licenseNumber}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+        <th *matHeaderCellDef>Owner</th>
+        <td *matCellDef="let car">{{car.owner}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="capacity">
+        <th *matHeaderCellDef>Capacity</th>
+        <td *matCellDef="let car">{{car.capacity}}</td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+</table>
